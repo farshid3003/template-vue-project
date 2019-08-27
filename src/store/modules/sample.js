@@ -2,15 +2,15 @@ import service from '@/services/sample.service.js'
 
 // STATE
 export const state = {
-  sampleObject: {}
+  sampleObject: ''
 }
 
 // Actions
 export const actions = {
-  async loadSample ({ commit, dispatch }) {
-    await service.loadSample('test')
+  loadSample ({ commit, dispatch }, {x} ) {
+    service.loadSample(x)
     .then((response) => {
-      commit('setSample', response.result)
+      commit('setSample', response)
     })
     .catch((error) => {
       dispatch('messages/addError', error, { root: true });
@@ -27,7 +27,7 @@ export const mutations = {
 
 // Getters
 export const getters = {
-  group: s => s.sampleObject
+  sampleObject: s => s.sampleObject
 }
 
 export default {

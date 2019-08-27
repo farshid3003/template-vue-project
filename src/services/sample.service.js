@@ -1,9 +1,8 @@
-export default class SampleService {
-  constructor () {
-    
-  }
+import axios from 'axios';
 
-  async loadSample (x) {
-    return { result : x };
+export default {
+ 
+  loadSample (x) {
+    return axios.get(`http://localhost:5000/api/values?x=${x}`)
   }
 }
